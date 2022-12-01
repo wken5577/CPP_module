@@ -1,6 +1,11 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <exception>
+#include <algorithm> 
+#include <iterator>
+#include <iostream>
+
 class Span
 {
 private:
@@ -17,9 +22,24 @@ public:
 
 	Span & operator= (const Span &data);
 
-	void addNumber(int n);
 	int shortestSpan();
 	int longestSpan();
+	void addNumber(int n);
+
+	template <typename T>
+	void addNumber(T first, T last)
+	{
+		if (curIdx == capacity)
+			throw std::exception();
+		while (curIdx < capacity && first <= last)
+		{
+			arr[curIdx] = *first;
+			first++;
+			curIdx++;
+		}
+		if (first != last)
+			throw std::exception();
+	}
 };
 
 #endif

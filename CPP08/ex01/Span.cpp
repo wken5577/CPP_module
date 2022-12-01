@@ -1,6 +1,5 @@
 #include "Span.hpp"
-#include <exception>
-#include <algorithm> 
+
 
 Span::Span(){}
 
@@ -38,6 +37,7 @@ void Span::addNumber(int n)
 		throw std::exception();
 	arr[curIdx++] = n;
 }
+
 
 int Span::shortestSpan()
 {
